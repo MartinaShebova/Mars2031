@@ -1,0 +1,12 @@
+{% for resource in cities.resources %}
+    <li>
+        {% if resource.resource.name == "Gold" %}
+            <span style="color: yellow">Town {{ resource.city.cityName }} :  </span>
+            <span style="color: white"> {{ resource.resource.name }} = {{ resource.amount }}</span>
+        {% else %}
+        <span style="color: white"> {{ resource.resource.name }} = {{ resource.amount }} </span>
+        {% endif %}
+    </li>
+{% endfor %}
+
+

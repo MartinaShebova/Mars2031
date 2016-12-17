@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <table border="1" class="table">
+        <thead>
+            <tr>
+                <th >Name</th>
+                <th>Level</th>
+                {% for resource in resources %}
+                <th>{{ resource.name }}</th>
+                {% endfor %}
+                <th>Build next</th>
+                <td>Time</td>
+                <td>Time Cost</td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for building in buildings %}
+            <tr>
+                <td class="level-up" >{{ building.building.buildingName }}</td>
+                <td>{{ building.level }}</td>
+                {% for cost in building.building.costs %}
+                    <td>{{ cost.amount * (building.level+1) }} </td>
+                {% endfor %}
+                <td><span><a class="level-up" href="{{ path('evolve', {id: building.building.id}) }}">Build on ({{ building.level + 1 }} Level)</a></span></td>
+                <td class="timer"></td>
+                <td><p>{{ building.timeToGetBuild / 60 }} mins <span class="time-cost hidden">{{ building.timeToGetBuild }}</span></p></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

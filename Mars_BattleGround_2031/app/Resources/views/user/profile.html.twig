@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'profile' %}
+
+{% block main %}
+    <div>
+        {{ player.username }}
+        <br>
+        {{ player.fullName }}
+        {% for city in player.cities %}
+            {% if city.id == cityId %}
+                <p style="color: green">{{ city.cityName }} [{{ city.x }}:{{ city.y }}]</p>
+            {% else %}
+                <p><a href="{{ path('change_city', {id: city.id}) }}">{{ city.cityName }} [{{ city.x }}:{{ city.y }}]</a></p>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="pull-right">
+        <a href="{{ path('buildings_list') }}">Buildings</a>
+    </div>
+{% endblock %}

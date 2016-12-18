@@ -1,6 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block main %}
+    {% if app.user %}
+        <ul class="resources-container">
+            {{ render(controller(
+            'MarsGameBundle:City:resources'
+            )) }}
+        </ul>
+    {% endif %}
     <table border="1" class="table">
         <thead>
             <tr>
@@ -22,7 +29,7 @@
                 {% for cost in building.building.costs %}
                     <td>{{ cost.amount * (building.level+1) }} </td>
                 {% endfor %}
-                <td><span><a class="level-up" href="{{ path('evolve', {id: building.building.id}) }}">Build on ({{ building.level + 1 }} Level)</a></span></td>
+                <td><span><a class="level-up" id="build" href="{{ path('evolve', {id: building.building.id}) }}">Build on ({{ building.level + 1 }} Level)</a></span></td>
                 <td class="timer"></td>
                 <td><p>{{ building.timeToGetBuild / 60 }} mins <span class="time-cost hidden">{{ building.timeToGetBuild }}</span></p></td>
             </tr>

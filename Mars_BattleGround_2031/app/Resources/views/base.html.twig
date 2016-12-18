@@ -22,27 +22,20 @@
         <div class="navbar navbar-default navbar-static-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <a href="{{ path('home_index') }}" class="navbar-brand">SOFTUNI GAME</a>
+                    <a href="{{ path('home_index') }}" class="navbar-brand">Home</a>
 
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+                    {#<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">#}
+                        {#<span class="icon-bar"></span>#}
+                        {#<span class="icon-bar"></span>#}
+                        {#<span class="icon-bar"></span>#}
+                    {#</button>#}
                 </div>
                 <div class="navbar-collapse collapse">
-                    {% if app.user %}
-                     <ul class="nav navbar-nav navbar-left">
-                        {{ render(controller(
-                        'MarsGameBundle:City:resources'
-                        )) }}
-                    </ul>
-                    {% endif %}
                     <ul class="nav navbar-nav navbar-right">
                         {% if app.user %}
                             <li>
                                 <a href="{{ path('user_profile') }}">
-                                    Dashboard
+                                    Control Panel
                                 </a>
                             </li>
                             <li>
@@ -53,18 +46,21 @@
                         {% else %}
                             <li>
                                 <a href="{{ path('user_register') }}">
-                                    REGISTER
+                                    Register for free
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ path('security_login') }}">
-                                    LOGIN
+                                    Login
                                 </a>
                             </li>
                         {% endif %}
                     </ul>
                 </div>
             </div>
+        </div>
+        <div id="game_title">
+            <p><a href="#">Mars BattleGround 2031</a></p>
         </div>
     </header>
 {% endblock %}
@@ -82,7 +78,7 @@
 {% block footer %}
     <footer>
         <div class="container modal-footer">
-            <p>&copy; MarsGameBundle</p>
+            <p></p>
         </div>
     </footer>
 {% endblock %}

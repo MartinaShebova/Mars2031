@@ -4,18 +4,29 @@
 
 {% block main %}
     <div>
-        {{ player.username }}
-        <br>
-        {{ player.fullName }}
+        <div id="hello-player">
+            <span>Hello,</span>
+            <span>{{ player.username }}</span>
+            <span>{{ player.fullName }}. </span>
+            <span>Visit your cities:</span>
+        </div>
+        <div id="cities-table">
+        <table>
         {% for city in player.cities %}
             {% if city.id == cityId %}
-                <p style="color: green">{{ city.cityName }} [{{ city.x }}:{{ city.y }}]</p>
+                <tr>
+                    <td class="td-city">{{ city.cityName }} [{{ city.x }}:{{ city.y }}]</td>
+                </tr>
             {% else %}
-                <p><a href="{{ path('change_city', {id: city.id}) }}">{{ city.cityName }} [{{ city.x }}:{{ city.y }}]</a></p>
+                <tr>
+                    <td class="td-city"><a id="link-to-city" href="{{ path('change_city', {id: city.id}) }}">{{ city.cityName }} [{{ city.x }}:{{ city.y }}]</a></td>
+                </tr>
             {% endif %}
         {% endfor %}
+        </table>
+        </div>
     </div>
-    <div class="pull-right">
+    <div id="building-button">
         <a href="{{ path('buildings_list') }}">Buildings</a>
     </div>
 {% endblock %}

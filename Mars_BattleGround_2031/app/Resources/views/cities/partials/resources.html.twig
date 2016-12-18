@@ -1,12 +1,18 @@
+<!DOCTYPE html>
+    <title>{% block title %}Home{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/resources.css') }}">
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+<div id="main">
+    <span id="town" class="common_res">{{ cities.cityName }}</span>
 {% for resource in cities.resources %}
-    <li>
-        {% if resource.resource.name == "Gold" %}
-            <span style="color: yellow">Town {{ resource.city.cityName }} :  </span>
-            <span style="color: white"> {{ resource.resource.name }} = {{ resource.amount }}</span>
+        {% if resource.resource.name != "Gold" %}
+            <span id="res2" class="common_res"> {{ resource.resource.name }} = {{ resource.amount }}</span>
         {% else %}
-        <span style="color: white"> {{ resource.resource.name }} = {{ resource.amount }} </span>
+            <span id="res1" class="common_res"> {{ resource.resource.name }} = {{ resource.amount }}</span>
         {% endif %}
-    </li>
 {% endfor %}
+</div>
 
 

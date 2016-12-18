@@ -134,11 +134,12 @@ class PlayerController extends CityController
 
                 $city = new City();
                 $city->setX($coordinateX);
+                $city->setX($coordinateX);
                 $city->setY($coordinateY);
                 $arrayOfNames = $this->generateRandomCityName;
                 $cityNames = array_rand($arrayOfNames, 1);
                 $getName = $arrayOfNames[$cityNames];
-                $city->setCityName('City:' . PHP_EOL . ($i+1) . PHP_EOL . 'City Name:' . PHP_EOL . $getName);
+                $city->setCityName('City:' . PHP_EOL . ($i+1) . PHP_EOL . $getName);
                 $city->setPlayer($player);
                 $em->persist($city);
                 $em->flush();
